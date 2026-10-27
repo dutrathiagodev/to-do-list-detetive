@@ -41,6 +41,16 @@ export const card = {
   destroy: "Destruir",
 };
 
+export const checklist = {
+  title: "Checklist",
+  empty: "Nenhuma pista anotada ainda.",
+  placeholder: "Novo item",
+  add: "Adicionar",
+  addAria: "Adicionar item ao checklist",
+  removeAria: "Remover item",
+  progressAria: "Progresso do checklist",
+};
+
 export const emptyStates: Record<"vazio" | TaskFilter, { title: string; text: string; note: string }> = {
   vazio: {
     title: "Arquivo vazio",
@@ -66,9 +76,29 @@ export const emptyStates: Record<"vazio" | TaskFilter, { title: string; text: st
 
 /** Fichas de exemplo exibidas só na primeira visita (antes de qualquer gravação). */
 export const seedTasks: Task[] = [
-  { id: 1, text: "Pesquisar ideias de conteúdo", done: false, date: "20/10" },
-  { id: 2, text: "Criar um banco de autores convidados", done: false, date: "21/10" },
-  { id: 3, text: "Renovar a carteira de motorista", done: true, date: "22/10" },
-  { id: 4, text: "Consultar o contador sobre as contas", done: false, date: "23/10" },
-  { id: 5, text: "Imprimir cartões de visita", done: true, date: "24/10" },
+  {
+    id: 1,
+    text: "Pesquisar ideias de conteúdo",
+    done: false,
+    date: "20/10",
+    checklist: [
+      { id: 1, text: "Listar temas em alta", done: true },
+      { id: 2, text: "Ver o que a concorrência publica", done: false },
+      { id: 3, text: "Escolher três pautas", done: false },
+    ],
+  },
+  { id: 2, text: "Criar um banco de autores convidados", done: false, date: "21/10", checklist: [] },
+  { id: 3, text: "Renovar a carteira de motorista", done: true, date: "22/10", checklist: [] },
+  {
+    id: 4,
+    text: "Consultar o contador sobre as contas",
+    done: false,
+    date: "23/10",
+    checklist: [
+      { id: 1, text: "Separar os comprovantes", done: true },
+      { id: 2, text: "Marcar horário", done: true },
+      { id: 3, text: "Levar os documentos", done: false },
+    ],
+  },
+  { id: 5, text: "Imprimir cartões de visita", done: true, date: "24/10", checklist: [] },
 ];
