@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { TaskChecklist } from "@/components/sections/tasks/task-checklist";
 import { Pin } from "@/components/ui/pin";
 import { card } from "@/content/tasks";
 import { cn } from "@/lib/utils";
@@ -22,9 +23,20 @@ type TaskCardProps = {
   index: number;
   onToggle: (id: number) => void;
   onRemove: (id: number) => void;
+  onAddItem: (taskId: number, text: string) => void;
+  onToggleItem: (taskId: number, itemId: number) => void;
+  onRemoveItem: (taskId: number, itemId: number) => void;
 };
 
-export function TaskCard({ task, index, onToggle, onRemove }: TaskCardProps) {
+export function TaskCard({
+  task,
+  index,
+  onToggle,
+  onRemove,
+  onAddItem,
+  onToggleItem,
+  onRemoveItem,
+}: TaskCardProps) {
   const [asking, setAsking] = useState(false);
   const num = String(task.id).padStart(3, "0");
 
@@ -53,6 +65,14 @@ export function TaskCard({ task, index, onToggle, onRemove }: TaskCardProps) {
       >
         {task.text}
       </p>
+
+      <TaskChecklist
+        taskId={task.id}
+        items={task.checklist ?? []}
+        onAdd={(text) => onAddItem(task.id, text)}
+        onToggle={(itemId) => onToggleItem(task.id, itemId)}
+        onRemove={(itemId) => onRemoveItem(task.id, itemId)}
+      />
 
       {task.done && (
         <span className="pointer-events-none absolute right-3 top-[42%] -rotate-[14deg] rounded border-4 border-double border-stamp bg-paper/60 px-3 py-1 font-stencil text-[26px] font-bold uppercase tracking-[0.08em] text-stamp">
