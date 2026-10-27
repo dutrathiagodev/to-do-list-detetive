@@ -10,7 +10,16 @@ import { matchesFilter } from "@/lib/utils";
 import type { TaskFilter } from "@/types/tasks";
 
 export function TasksApp() {
-  const { tasks, ready, addTask, toggleTask, removeTask } = useTasks();
+  const {
+    tasks,
+    ready,
+    addTask,
+    toggleTask,
+    removeTask,
+    addChecklistItem,
+    toggleChecklistItem,
+    removeChecklistItem,
+  } = useTasks();
   const [filter, setFilter] = useState<TaskFilter>("todas");
 
   const done = tasks.filter((task) => task.done).length;
@@ -58,6 +67,9 @@ export function TasksApp() {
                   index={index}
                   onToggle={toggleTask}
                   onRemove={removeTask}
+                  onAddItem={addChecklistItem}
+                  onToggleItem={toggleChecklistItem}
+                  onRemoveItem={removeChecklistItem}
                 />
               ))}
             </ul>
