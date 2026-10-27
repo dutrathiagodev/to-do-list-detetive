@@ -5,6 +5,7 @@
 **Lista de tarefas com tema de investigação: cada tarefa é um caso, preso num quadro de cortiça.**
 
 [![Site](https://img.shields.io/badge/site-online-F5C84A?style=for-the-badge&labelColor=2A1B11)](https://to-do-list-detetive.vercel.app)
+[![Figma](https://img.shields.io/badge/design-Figma-B5121B?style=for-the-badge&logo=figma&logoColor=white)](https://www.figma.com/design/AW4ENTy46KWd2yimQXySOj)
 [![Trello](https://img.shields.io/badge/quadro-Trello-0052CC?style=for-the-badge&logo=trello&logoColor=white)](https://trello.com/b/rmZWN3fj/to-do-list-detetive)
 
 ![Next.js](https://img.shields.io/badge/Next.js-16-000000?logo=nextdotjs&logoColor=white)
@@ -27,7 +28,25 @@ O tema detetive aparece em tudo: tarefa é *caso*, a lista é o *arquivo* e excl
 | | |
 |---|---|
 | Site publicado | https://to-do-list-detetive.vercel.app |
+| Repositório | https://github.com/dutrathiagodev/to-do-list-detetive |
+| Design no Figma | [To-Do List Detetive — Caso Aberto](https://www.figma.com/design/AW4ENTy46KWd2yimQXySOj) |
 | Quadro de tarefas (Trello) | [To-Do List Detetive](https://trello.com/b/rmZWN3fj/to-do-list-detetive) |
+
+## Requisitos da atividade
+
+| Requisito | Onde está |
+|---|---|
+| Adicionar tarefas por formulário | `new-task-form.tsx`, com aviso para título vazio |
+| Marcar como concluída ou pendente | `task-card.tsx` (Resolver / Reabrir) |
+| Excluir tarefas | `task-card.tsx`, com confirmação; remoção com `filter()` em `use-tasks.ts` |
+| Filtrar por todas, pendentes e concluídas | `task-sidebar.tsx` e `matchesFilter` em `lib/utils.ts` |
+| Exibir a quantidade de tarefas | contador e taxa de resolução na barra lateral |
+| Interface organizada, intuitiva e responsiva | layout mobile first em Tailwind; 6 telas no Figma |
+| `useState`, eventos e `map()` | filtro, formulário e confirmação com `useState`; fichas renderizadas com `map()` em `tasks-app.tsx` |
+| Componentes reutilizáveis | `Button`, `Pin`, `TaskCard`, `TaskChecklist`, `EmptyState` |
+| Desafio extra: `localStorage` | `lib/tasks-store.ts` e `lib/use-tasks.ts` |
+
+Na primeira visita aparecem 5 fichas de exemplo. Depois de qualquer alteração, o que está na tela passa a ser o que fica salvo no navegador.
 
 ## O que tem na página
 
@@ -40,6 +59,28 @@ O tema detetive aparece em tudo: tarefa é *caso*, a lista é o *arquivo* e excl
 - **Estados vazios** diferentes para cada filtro
 - **Persistência** em `localStorage`: tudo continua depois de recarregar a página
 - Layout responsivo e navegação por teclado com foco visível
+
+## Design e fontes
+
+O design está no [Figma](https://www.figma.com/design/AW4ENTy46KWd2yimQXySOj), em 3 páginas: **Capa** (informações do projeto), **Design System** (componentes e variantes) e **Telas** (Entrada, Quadro de casos, Mobile, Estados vazios, Diálogos e Guia de estilo).
+
+| | Fonte | Uso |
+|---|---|---|
+| Títulos e carimbos | Stardos Stencil | marca, títulos, carimbo "Resolvido" |
+| Texto | Special Elite | fichas, botões, formulários |
+| Anotações à mão | Caveat | slogan e notas |
+
+Os tokens do tema ficam em `@theme` no `src/app/globals.css` e espelham as variáveis do Figma:
+
+| Cor | Valor | Uso |
+|---|---|---|
+| `wood` | `#2A1B11` | fundo do app |
+| `cork` | `#A97B4F` | quadro de cortiça |
+| `manila` | `#E0C58D` | fichas |
+| `paper` | `#F3E9CF` | modais e estados vazios |
+| `ink` | `#1C1915` | texto e botões escuros |
+| `string` / `stamp` | `#C4262E` / `#9D1219` | pinos, barbante e carimbo |
+| `lamp` | `#F5C84A` | destaques e favicon |
 
 ## Tecnologias
 
